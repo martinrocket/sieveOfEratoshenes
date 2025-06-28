@@ -16,20 +16,30 @@ func main() {
 
 	//Create a slice with 100 integers
 
-	var x []int
+	var x, y []int
 
 	//for i := 2; i <= 100; i++ {
-	for i := 2; i <= 10; i++ {
+	for i := 2; i <= 100; i++ {
 		x = append(x, i)
 
 	}
 
-	fmt.Println(x)
-	sliceLength := len(x)
-	for i := 0; i < sliceLength-1; {
-		x = slices.Delete(x, len(x)-1, len(x))
-		sliceLength = len(x)
-		fmt.Println(x)
+	//fmt.Println(x)
 
+	for j := len(x); j > 0; j-- {
+		for i := 0; i < j; i++ {
+			//fmt.Printf("%d / %d = %d %d \n", x[j-1], x[i], x[j-1]/x[i], x[j-1]%x[i])
+			if x[j-1]%x[i] == 0 && x[j-1]/x[i] != 1 {
+				//fmt.Printf(" break %d \n", x[j-1])
+				break
+			} else {
+				if x[j-1]/x[i] == 1 {
+					y = append(y, x[j-1])
+					break
+				}
+			}
+		}
 	}
+	slices.Reverse(y)
+	fmt.Println(y)
 }
