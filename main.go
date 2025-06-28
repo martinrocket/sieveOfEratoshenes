@@ -7,6 +7,7 @@ starting from 2, until reaching the square root of the specified limit. */
 
 import (
 	"fmt"
+	"math"
 	"slices"
 )
 
@@ -19,7 +20,7 @@ func main() {
 	var x, y []int
 
 	//for i := 2; i <= 100; i++ {
-	for i := 2; i <= 100; i++ {
+	for i := 2; i <= 100000; i++ {
 		x = append(x, i)
 
 	}
@@ -42,4 +43,20 @@ func main() {
 	}
 	slices.Reverse(y)
 	fmt.Println(y)
+
+	var z []float64
+	for i := 1; i < 100; i++ {
+		z = append(z, math.Pow(2.0, float64(i))-1)
+
+	}
+	fmt.Println(z)
+
+	for i := range y {
+		for j := range z {
+			if float64(y[i]) == z[j] {
+				fmt.Println(y[i])
+			}
+		}
+
+	}
 }
